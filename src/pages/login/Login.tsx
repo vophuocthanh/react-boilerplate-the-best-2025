@@ -17,6 +17,8 @@ import { PASSWORD_TYPE, TEXT_TYPE } from '@/configs/consts'
 import { REMEMBER_ME } from '@/core/configs/const'
 import { path } from '@/core/constants/path'
 import { containerVariants, itemVariants } from '@/core/lib/variant/style-variant'
+import { loginStart, loginSuccess, loginFailure } from '@/core/store-redux/features/auth/authSlice'
+import { useAppDispatch, useAppSelector } from '@/core/store-redux/types'
 import { LoginSchema } from '@/core/zod'
 import { useLoginAuth } from '@/hooks/auth/use-query-auth'
 import { type RememberMeData } from '@/models/interface/auth.interface'
@@ -31,6 +33,8 @@ const techStack = [
 ]
 
 export default function Login() {
+  const dispatch = useAppDispatch()
+  const { isLoading, error } = useAppSelector((state) => state.auth)
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false)
   const [rememberMe, setRememberMe] = useState<boolean>(() => {
     const savedData = localStorage.getItem(REMEMBER_ME)
@@ -49,13 +53,21 @@ export default function Login() {
     }
   })
 
-  const { mutate: mutationLogin, isPending } = useLoginAuth()
+  const { mutate: mutationLogin } = useLoginAuth()
 
   const onSubmit = useCallback(
     (data: z.infer<typeof LoginSchema>) => {
-      mutationLogin(data)
+      dispatch(loginStart())
+      mutationLogin(data, {
+        onSuccess: (response) => {
+          dispatch(loginSuccess(response))
+        },
+        onError: (error) => {
+          dispatch(loginFailure(error.message))
+        }
+      })
     },
-    [mutationLogin]
+    [mutationLogin, dispatch]
   )
 
   const togglePasswordVisibility = () => setIsPasswordVisible((prev) => !prev)
@@ -89,12 +101,12 @@ export default function Login() {
 
   return (
     <div className='flex justify-center w-full min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50'>
-      <div className='flex items-center justify-between w-full max-w-7xl mx-auto my-8 px-4'>
+      <div className='flex items-center justify-between w-full px-4 mx-auto my-8 max-w-7xl'>
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
-          className='flex flex-col w-full max-w-md space-y-6 bg-white p-8 rounded-2xl shadow-lg'
+          className='flex flex-col w-full max-w-md p-8 space-y-6 bg-white shadow-lg rounded-2xl'
         >
           <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
             <Logo />
@@ -157,7 +169,7 @@ export default function Login() {
                 />
               </motion.div>
 
-              <motion.div variants={itemVariants} className='flex justify-between items-center'>
+              <motion.div variants={itemVariants} className='flex items-center justify-between'>
                 <div className='flex items-center space-x-2'>
                   <Checkbox
                     id='terms'
@@ -177,19 +189,25 @@ export default function Login() {
                 </Link>
               </motion.div>
 
+              {error && (
+                <motion.div variants={itemVariants} className='text-sm text-center text-red-500'>
+                  {error}
+                </motion.div>
+              )}
+
               <motion.div variants={itemVariants}>
                 <Button
-                  loading={isPending}
-                  className='w-full text-white bg-indigo-600 hover:bg-indigo-700 hover:shadow-lg transition-all duration-300'
+                  loading={isLoading}
+                  className='w-full text-white transition-all duration-300 bg-indigo-600 hover:bg-indigo-700 hover:shadow-lg'
                   type='submit'
                 >
                   Đăng nhập
                 </Button>
               </motion.div>
 
-              <motion.p variants={itemVariants} className='text-center text-sm text-gray-600'>
+              <motion.p variants={itemVariants} className='text-sm text-center text-gray-600'>
                 Chưa có tài khoản?{' '}
-                <Link to='/register' className='text-indigo-600 hover:text-indigo-800 hover:underline font-medium'>
+                <Link to='/register' className='font-medium text-indigo-600 hover:text-indigo-800 hover:underline'>
                   Đăng ký ngay
                 </Link>
               </motion.p>
@@ -202,21 +220,21 @@ export default function Login() {
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className='hidden lg:flex flex-col items-center justify-center w-full max-w-md space-y-8'
+          className='flex-col items-center justify-center hidden w-full max-w-md space-y-8 lg:flex'
         >
-          <div className='text-center space-y-4'>
+          <div className='space-y-4 text-center'>
             <h2 className='text-3xl font-bold text-gray-900'>Công nghệ hiện đại</h2>
             <p className='text-gray-600'>Được xây dựng với những công nghệ mới nhất</p>
           </div>
 
-          <div className='grid grid-cols-2 gap-6 w-full'>
+          <div className='grid w-full grid-cols-2 gap-6'>
             {techStack.map((tech, index) => (
               <motion.div
                 key={tech.name}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
-                className='flex items-center space-x-3 p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300'
+                className='flex items-center p-4 space-x-3 transition-shadow duration-300 bg-white shadow-md rounded-xl hover:shadow-lg'
               >
                 <span className='text-2xl'>{tech.icon}</span>
                 <span className='font-medium text-gray-800'>{tech.name}</span>
@@ -224,7 +242,7 @@ export default function Login() {
             ))}
           </div>
 
-          <div className='text-center space-y-4 mt-8'>
+          <div className='mt-8 space-y-4 text-center'>
             <h3 className='text-xl font-semibold text-gray-900'>Tính năng nổi bật</h3>
             <ul className='space-y-2 text-gray-600'>
               <li>✨ Giao diện hiện đại, thân thiện</li>
