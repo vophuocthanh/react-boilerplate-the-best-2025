@@ -1,0 +1,90 @@
+{
+  "home": {
+    "hero": {
+      "title": "React TypeScript Boilerplate",
+      "description": "A modern, feature-rich React TypeScript boilerplate with best practices, performance optimizations, and developer experience in mind.",
+      "getStarted": "Get Started",
+      "viewGithub": "View on GitHub"
+    },
+    "features": {
+      "title": "Features",
+      "description": "Everything you need to build modern React applications",
+      "typescript": {
+        "title": "TypeScript",
+        "description": "Built with TypeScript for better development experience and type safety"
+      },
+      "modernStack": {
+        "title": "Modern Stack",
+        "description": "Latest React features, Vite, TailwindCSS, and more"
+      },
+      "performance": {
+        "title": "Performance",
+        "description": "Optimized for performance with code splitting and lazy loading"
+      },
+      "developerExperience": {
+        "title": "Developer Experience",
+        "description": "Great developer experience with hot reload and TypeScript support"
+      },
+      "bestPractices": {
+        "title": "Best Practices",
+        "description": "Follows React best practices and modern development standards"
+      },
+      "readyToUse": {
+        "title": "Ready to Use",
+        "description": "Includes authentication, routing, and other common features"
+      }
+    },
+    "techStack": {
+      "title": "Tech Stack",
+      "description": "Built with the latest and greatest technologies"
+    },
+    "gettingStarted": {
+      "title": "Getting Started",
+      "description": "Start building your next React application in minutes",
+      "clone": {
+        "title": "Clone the repository",
+        "description": "Start by cloning the repository to your local machine",
+        "code": "git clone https://github.com/vophuocthanh/react-boilerplate-practices-2025"
+      },
+      "install": {
+        "title": "Install dependencies",
+        "description": "Install all required dependencies using your favorite package manager",
+        "code": "yarn install"
+      },
+      "start": {
+        "title": "Start development",
+        "description": "Start the development server and begin coding",
+        "code": "yarn dev"
+      },
+      "build": {
+        "title": "Build for production",
+        "description": "Build your application for production deployment",
+        "code": "yarn build"
+      }
+    },
+    "footer": {
+      "description": "A modern React TypeScript boilerplate with best practices and developer experience in mind.",
+      "documentation": {
+        "title": "Documentation",
+        "gettingStarted": "Getting Started",
+        "features": "Features",
+        "apiReference": "API Reference",
+        "examples": "Examples"
+      },
+      "resources": {
+        "title": "Resources",
+        "github": "GitHub",
+        "discord": "Discord",
+        "twitter": "Twitter",
+        "blog": "Blog"
+      },
+      "legal": {
+        "title": "Legal",
+        "privacy": "Privacy Policy",
+        "terms": "Terms of Service",
+        "license": "License"
+      },
+      "copyright": "© {{year}} React Boilerplate. All rights reserved."
+    }
+  }
+}

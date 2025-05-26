@@ -23,7 +23,8 @@ const handleSmoothScroll = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, 
 }
 
 const Header = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation(['home'])
+  const { t: tAuth } = useTranslation(['auth'])
   const [menuOpen, setMenuOpen] = useState(false)
   const { isAuthenticated, user, logout } = useAuthStore()
 
@@ -50,9 +51,9 @@ const Header = () => {
                 onClick={(e) => handleSmoothScroll(e, link.to)}
                 className='px-2 py-1 font-medium text-gray-700 transition-colors bg-transparent border-none rounded cursor-pointer dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500'
                 tabIndex={0}
-                aria-label={t(link.labelKey)}
+                aria-label={t(`home.${link.labelKey}`)}
               >
-                {t(link.labelKey)}
+                {t(`home.${link.labelKey}`)}
               </button>
             </li>
           ))}
@@ -69,7 +70,7 @@ const Header = () => {
                   <div
                     role='button'
                     tabIndex={0}
-                    className='relative w-10 h-10 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 cursor-pointer'
+                    className='relative w-10 h-10 rounded-full cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500'
                   >
                     <Avatar className='w-10 h-10'>
                       <AvatarImage src={'/images/avatar.png'} alt={user?.name} />
@@ -85,16 +86,16 @@ const Header = () => {
                     </div>
                     <div className='space-y-2'>
                       <div className='border-b border-gray-200 dark:border-gray-800'>
-                        <Button variant='ghost' className='w-full justify-start flex items-center'>
+                        <Button variant='ghost' className='flex items-center justify-start w-full'>
                           <Link to={path.profile.root} className='flex items-center'>
                             <User className='w-4 h-4 mr-2' />
-                            {t('auth.profile')}
+                            {tAuth('auth.profile')}
                           </Link>
                         </Button>
                       </div>
                       <Button variant='destructive' className='w-full' onClick={handleLogout}>
                         <LogOut className='w-4 h-4 mr-2' />
-                        {t('auth.logout')}
+                        {tAuth('auth.logout')}
                       </Button>
                     </div>
                   </div>
@@ -109,7 +110,7 @@ const Header = () => {
                   <div
                     role='button'
                     tabIndex={0}
-                    className='relative w-10 h-10 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 cursor-pointer'
+                    className='relative w-10 h-10 rounded-full cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500'
                   >
                     <Avatar className='w-10 h-10'>
                       <AvatarImage src={'/images/avatar.png'} alt={user?.name} />
@@ -125,16 +126,16 @@ const Header = () => {
                     </div>
                     <div className='space-y-2'>
                       <div className='border-b border-gray-200 dark:border-gray-800'>
-                        <Button variant='ghost' className='w-full justify-start flex items-center'>
+                        <Button variant='ghost' className='flex items-center justify-start w-full'>
                           <Link to={path.profile.root} className='flex items-center'>
                             <User className='w-4 h-4 mr-2' />
-                            {t('auth.profile')}
+                            {tAuth('auth.profile')}
                           </Link>
                         </Button>
                       </div>
                       <Button variant='destructive' className='w-full' onClick={handleLogout}>
                         <LogOut className='w-4 h-4 mr-2' />
-                        {t('auth.logout')}
+                        {tAuth('auth.logout')}
                       </Button>
                     </div>
                   </div>
@@ -147,10 +148,10 @@ const Header = () => {
                 variant='outline'
                 className='px-4 py-2 font-medium text-gray-900 transition-all duration-200 border border-gray-200 rounded-md dark:border-gray-700 bg-white/80 dark:bg-gray-800/80 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 focus-visible:ring-2 focus-visible:ring-blue-500'
               >
-                <Link to={path.auth.login}>{t('auth.login')}</Link>
+                <Link to={path.auth.login}>{tAuth('auth.login')}</Link>
               </Button>
               <Button className='px-4 py-2 font-medium text-white transition-all duration-200 bg-blue-600 rounded-md dark:bg-blue-500 hover:bg-blue-700 dark:hover:bg-blue-600 focus-visible:ring-2 focus-visible:ring-blue-500'>
-                <Link to={path.auth.register}>{t('auth.register')}</Link>
+                <Link to={path.auth.register}>{tAuth('auth.register')}</Link>
               </Button>
             </div>
           )}
@@ -183,9 +184,9 @@ const Header = () => {
                   }}
                   className='w-full px-2 py-2 font-medium text-left text-gray-700 transition-colors bg-transparent border-none rounded cursor-pointer dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500'
                   tabIndex={0}
-                  aria-label={t(link.labelKey)}
+                  aria-label={t(`home.${link.labelKey}`)}
                 >
-                  {t(link.labelKey)}
+                  {t(`home.${link.labelKey}`)}
                 </button>
               </li>
             ))}
@@ -197,12 +198,12 @@ const Header = () => {
                   className='px-4 py-2 font-medium text-gray-900 transition-all duration-200 border border-gray-200 rounded-md dark:border-gray-700 bg-white/80 dark:bg-gray-800/80 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 focus-visible:ring-2 focus-visible:ring-blue-500'
                 >
                   <Link to={path.auth.login} onClick={() => setMenuOpen(false)}>
-                    {t('auth.login')}
+                    {tAuth('auth.login')}
                   </Link>
                 </Button>
                 <Button className='px-4 py-2 font-medium text-white transition-all duration-200 bg-blue-600 rounded-md dark:bg-blue-500 hover:bg-blue-700 dark:hover:bg-blue-600 focus-visible:ring-2 focus-visible:ring-blue-500'>
                   <Link to={path.auth.register} onClick={() => setMenuOpen(false)}>
-                    {t('auth.register')}
+                    {tAuth('auth.register')}
                   </Link>
                 </Button>
               </div>
