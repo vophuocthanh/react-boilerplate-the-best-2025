@@ -1,0 +1,90 @@
+{
+  "home": {
+    "hero": {
+      "title": "React TypeScript Boilerplate",
+      "description": "Một React TypeScript boilerplate hiện đại, đầy đủ tính năng với các best practices, tối ưu hiệu năng và trải nghiệm phát triển.",
+      "getStarted": "Bắt đầu",
+      "viewGithub": "Xem trên GitHub"
+    },
+    "features": {
+      "title": "Tính năng",
+      "description": "Mọi thứ bạn cần để xây dựng ứng dụng React hiện đại",
+      "typescript": {
+        "title": "TypeScript",
+        "description": "Được xây dựng với TypeScript để có trải nghiệm phát triển tốt hơn và an toàn về kiểu dữ liệu"
+      },
+      "modernStack": {
+        "title": "Stack Hiện đại",
+        "description": "Các tính năng React mới nhất, Vite, TailwindCSS và nhiều hơn nữa"
+      },
+      "performance": {
+        "title": "Hiệu năng",
+        "description": "Tối ưu hiệu năng với code splitting và lazy loading"
+      },
+      "developerExperience": {
+        "title": "Trải nghiệm phát triển",
+        "description": "Trải nghiệm phát triển tuyệt vời với hot reload và hỗ trợ TypeScript"
+      },
+      "bestPractices": {
+        "title": "Best Practices",
+        "description": "Tuân thủ các best practices của React và tiêu chuẩn phát triển hiện đại"
+      },
+      "readyToUse": {
+        "title": "Sẵn sàng sử dụng",
+        "description": "Bao gồm xác thực, routing và các tính năng phổ biến khác"
+      }
+    },
+    "techStack": {
+      "title": "Công nghệ",
+      "description": "Được xây dựng với những công nghệ mới nhất"
+    },
+    "gettingStarted": {
+      "title": "Bắt đầu",
+      "description": "Bắt đầu xây dựng ứng dụng React tiếp theo của bạn trong vài phút",
+      "clone": {
+        "title": "Clone repository",
+        "description": "Bắt đầu bằng cách clone repository về máy local",
+        "code": "git clone https://github.com/vophuocthanh/react-boilerplate-practices-2025"
+      },
+      "install": {
+        "title": "Cài đặt dependencies",
+        "description": "Cài đặt tất cả dependencies cần thiết bằng package manager yêu thích của bạn",
+        "code": "yarn install"
+      },
+      "start": {
+        "title": "Bắt đầu phát triển",
+        "description": "Khởi động development server và bắt đầu code",
+        "code": "yarn dev"
+      },
+      "build": {
+        "title": "Build cho production",
+        "description": "Build ứng dụng của bạn để triển khai production",
+        "code": "yarn build"
+      }
+    },
+    "footer": {
+      "description": "Một React TypeScript boilerplate hiện đại với best practices và trải nghiệm phát triển.",
+      "documentation": {
+        "title": "Tài liệu",
+        "gettingStarted": "Bắt đầu",
+        "features": "Tính năng",
+        "apiReference": "Tham khảo API",
+        "examples": "Ví dụ"
+      },
+      "resources": {
+        "title": "Tài nguyên",
+        "github": "GitHub",
+        "discord": "Discord",
+        "twitter": "Twitter",
+        "blog": "Blog"
+      },
+      "legal": {
+        "title": "Pháp lý",
+        "privacy": "Chính sách bảo mật",
+        "terms": "Điều khoản dịch vụ",
+        "license": "Giấy phép"
+      },
+      "copyright": "© {{year}} React Boilerplate. Bảo lưu mọi quyền."
+    }
+  }
+}
